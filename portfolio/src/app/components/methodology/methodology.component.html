@@ -1,0 +1,82 @@
+<section id="methodology" class="section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div class="title-row">
+      <img src="/images/tmap1.png" alt="TMAP Book - Amplified Quality Engineering" loading="lazy" class="tmap-inline-img">
+      <h2>Quality Engineering</h2>
+    </div>
+    <p>TMAP - Amplified Quality Engineering | 30+ Years of Testing Excellence</p>
+  </div>
+
+  <div class="container">
+    
+    <!-- VOICE Model -->
+    <div class="voice-section" data-aos="fade-up" data-aos-delay="100">
+      <div class="voice-header">
+        <h3>The VOICE Model</h3>
+        <p class="voice-subtitle">Your IT Delivery Model — Your Specific Desired Subject</p>
+      </div>
+      
+      <div class="voice-grid">
+        <div 
+          *ngFor="let step of voiceSteps; let i = index" 
+          class="voice-card"
+          [attr.data-aos]="'zoom-in'"
+          [attr.data-aos-delay]="200 + (i * 100)"
+        >
+          <div class="voice-letter">{{ step.letter }}</div>
+          <div class="voice-content">
+            <i class="bi {{ step.icon }}"></i>
+            <h4>{{ step.title }}</h4>
+            <p>{{ step.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IT Delivery Models -->
+    <div class="delivery-section" data-aos="fade-up" data-aos-delay="300">
+      <h3 class="delivery-title">
+        <i class="bi bi-diagram-3 me-2"></i>
+        Choose Your IT Delivery Model
+      </h3>
+      
+      <div class="delivery-grid">
+        <div 
+          *ngFor="let model of deliveryModels; let i = index" 
+          class="delivery-wrapper"
+          [attr.data-aos]="'flip-up'"
+          [attr.data-aos-delay]="400 + (i * 150)"
+        >
+          <div class="delivery-image-card">
+            <img [src]="model.image" [alt]="model.title" loading="lazy">
+          </div>
+          <div class="delivery-text-content">
+            <ul class="model-list">
+              <li *ngFor="let m of model.models">
+                <div class="model-header">
+                  <strong>{{ m.name }}</strong>
+                </div>
+                <p class="model-desc">{{ m.description }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shift Left Banner -->
+    <div class="shift-left-banner" data-aos="fade-up" data-aos-delay="500">
+      <div class="banner-content">
+        <div class="banner-icon">
+          <i class="bi bi-arrow-left-circle"></i>
+        </div>
+        <div class="banner-text">
+          <h4>Shift Left Philosophy</h4>
+          <p>Initiating quality, security, and verification activities early in the SDLC. <strong>If you have to fail, fail fast!</strong> Early detection minimizes costs and delays.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

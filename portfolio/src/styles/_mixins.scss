@@ -1,0 +1,212 @@
+// ========================================
+// MIXINS
+// ========================================
+@use 'variables' as *;
+@use 'sass:color';
+
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Responsive Mixins
+@mixin mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Button Mixins
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: $nav-font;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &:focus {
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -10%) 100%);
+  color: $contrast-color;
+  box-shadow: 0 4px 15px rgba($accent-color, 0.4);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba($accent-color, 0.5);
+    background: linear-gradient(135deg, color.adjust($accent-color, $lightness: 5%) 0%, $accent-color 100%);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+  background: transparent;
+  border: 2px solid $accent-color;
+  color: $accent-color;
+
+  &:hover {
+    background: $accent-color;
+    color: $contrast-color;
+    transform: translateY(-2px);
+  }
+}
+
+// Card Mixins
+@mixin card-base {
+  background: $surface-color;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Section Title Mixin
+@mixin section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-family: $heading-font;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $heading-color;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, $accent-color, color.adjust($accent-color, $lightness: 20%));
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    color: $default-color;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Gradient Text
+@mixin gradient-text {
+  background: linear-gradient(135deg, $heading-color 0%, $accent-color 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Glassmorphism
+@mixin glassmorphism($blur: 10px, $opacity: 0.1) {
+  background: rgba($surface-color, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba($surface-color, 0.2);
+}
+
+// Animations
+@mixin float-animation($duration: 3s, $distance: 10px) {
+  animation: float $duration ease-in-out infinite;
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-$distance); }
+  }
+}
+
+@mixin pulse-animation($duration: 2s, $scale: 1.05) {
+  animation: pulse $duration ease-in-out infinite;
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale($scale); }
+  }
+}
+
+// Scrollbar Styling
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $light-bg-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $accent-color;
+    border-radius: 4px;
+
+    &:hover {
+      background: color.adjust($accent-color, $lightness: -10%);
+    }
+  }
+}

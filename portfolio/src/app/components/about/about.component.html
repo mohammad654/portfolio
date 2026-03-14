@@ -1,0 +1,148 @@
+<section id="about" class="section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>Passionate about creating exceptional software solutions and driving digital transformation</p>
+  </div>
+
+  <div class="container">
+    <div class="row align-items-start g-5">
+      
+      <!-- Profile Image Column -->
+      <div class="col-lg-5" data-aos="fade-right" data-aos-delay="100">
+        <div class="profile-section">
+          <div class="profile-image-wrapper">
+            <img src="/images/mo.jpg" alt="Mohammad Ali" class="profile-image">
+            <div class="profile-decoration"></div>
+          </div>
+
+          <!-- Quote -->
+          <div class="quote-box" data-aos="zoom-in" data-aos-delay="200">
+            <i class="bi bi-quote"></i>
+            <p>"Shift Left" – A testing approach that initiates quality, security, and verification early in the SDLC. If you have to fail, fail fast!</p>
+          </div>
+
+          <!-- Languages -->
+          <div class="languages-section" data-aos="fade-up" data-aos-delay="300">
+            <h4>
+              <i class="bi bi-translate me-2"></i>
+              Languages
+            </h4>
+            <div class="languages-grid">
+              <div 
+                *ngFor="let lang of languages; let i = index" 
+                class="language-item"
+              >
+                <span class="language-name">{{ lang.name }}</span>
+                <span class="language-level">{{ lang.level }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div class="interests-section" data-aos="fade-up" data-aos-delay="400">
+            <h4>
+              <i class="bi bi-heart me-2"></i>
+              Interests
+            </h4>
+            <div class="interests-grid">
+              <div 
+                *ngFor="let interest of interests" 
+                class="interest-item"
+              >
+                <div class="interest-label-group">
+                  <i class="bi {{ interest.icon }}"></i>
+                  <span>{{ interest.label }}</span>
+                </div>
+                <span class="interest-short">{{ interest.short }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <div class="about-content">
+          <div class="intro-section">
+            <h3 class="greeting">
+              Hi, I'm <span class="accent">Mohammad Ali</span> 👋
+            </h3>
+            <h4 class="subtitle">A Software Engineer</h4>
+            
+            <div class="story-content">
+              <p class="highlight">
+                I am a detail-oriented Software Engineer who likes to cooperate with colleagues. 
+                I'm always looking to learn more because I want to keep developing myself. 
+                One of my favorite sentences is: <em>"Hi everyone, it's time to get some fresh air!"</em>
+              </p>
+
+              <p>
+                My first challenge was at <strong>ASML</strong>, working on chip technology within the CPD team. 
+                My primary responsibilities include calibrating machine constants, measuring performance, 
+                and diagnosing issues. I ensure precise wafer stage positioning by developing and managing 
+                the JNOWV2 CPD measurement system using Python, enhancing accuracy and stability.
+              </p>
+
+              <p>
+                I work in a Linux Red Hat environment, utilizing the DevBench application for initial 
+                testing of subsystems without hardware. My role involves building, unit testing, and debugging.
+              </p>
+
+              <p>
+                Back in Syria, I studied Agriculture for five years at Al-Furat University. In the Netherlands, 
+                I pursued Application Development and took various courses in Java, C++, and algorithms. 
+                During a 6-month Software Engineering Track at <strong>Capgemini Academy</strong>, I worked on "Notflix," 
+                a Netflix clone, handling both front-end (Angular) and back-end (Spring Boot) development.
+              </p>
+
+              <p>
+                My experience with agriculture has shown me the importance of automation, a field that 
+                I want to make an impact in. I want to grow in the fields of automation and problem-solving. 
+                I believe that a healthy mind rests in a healthy body. I am also a member of a book club 
+                where we exchange ideas about the last book we have read.
+              </p>
+            </div>
+          </div>
+
+          <!-- Skills Grid -->
+          <div class="skills-overview" data-aos="fade-up" data-aos-delay="300">
+            <h4>
+              <i class="bi bi-lightning me-2"></i>
+              Core Expertise
+            </h4>
+            <div class="skills-grid">
+              <div 
+                *ngFor="let skill of skillCategories; let i = index" 
+                class="skill-box"
+                [attr.data-aos]="'zoom-in'"
+                [attr.data-aos-delay]="400 + (i * 100)"
+              >
+                <div class="skill-icon" [style.background]="skill.color">
+                  <i class="bi {{ skill.icon }}"></i>
+                </div>
+                <div class="skill-content">
+                  <h5>{{ skill.title }}</h5>
+                  <p>{{ skill.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download CV -->
+          <div class="cta-section" data-aos="fade-up" data-aos-delay="500">
+            <a href="#contact" class="btn btn-primary btn-lg">
+              <i class="bi bi-download me-2"></i>
+              Download CV
+            </a>
+            <a href="#resume" class="btn btn-outline btn-lg">
+              <i class="bi bi-arrow-right me-2"></i>
+              View Experience
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
