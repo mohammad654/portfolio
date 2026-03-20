@@ -77,9 +77,12 @@
 
 @mixin button-primary {
   @include button-base;
-  background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -10%) 100%);
-  color: $contrast-color;
-  box-shadow: 0 4px 15px rgba($accent-color, 0.4);
+
+  & {
+    background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -10%) 100%);
+    color: $contrast-color;
+    box-shadow: 0 4px 15px rgba($accent-color, 0.4);
+  }
 
   &:hover {
     transform: translateY(-2px);
@@ -94,9 +97,12 @@
 
 @mixin button-outline {
   @include button-base;
-  background: transparent;
-  border: 2px solid $accent-color;
-  color: $accent-color;
+
+  & {
+    background: transparent;
+    border: 2px solid $accent-color;
+    color: $accent-color;
+  }
 
   &:hover {
     background: $accent-color;
