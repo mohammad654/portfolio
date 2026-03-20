@@ -1,0 +1,608 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+@use 'sass:color';
+
+// Tab Navigation
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-family: $nav-font;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $default-color;
+  background: $surface-color;
+  border: 2px solid $light-bg-color;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  i {
+    font-size: 18px;
+  }
+
+  &:hover {
+    border-color: $accent-color;
+    color: $accent-color;
+  }
+
+  &.active {
+    background: $accent-color;
+    border-color: $accent-color;
+    color: $contrast-color;
+    box-shadow: 0 4px 15px rgba($accent-color, 0.3);
+  }
+}
+
+// Tab Content
+.tab-content {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Experience Timeline
+.experience-timeline {
+  position: relative;
+  padding-left: 50px;
+
+  @include mobile {
+    padding-left: 25px;
+  }
+}
+
+.timeline-line {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, $accent-color, $heading-color);
+  border-radius: 2px;
+
+  @include mobile {
+    left: 8px;
+  }
+}
+
+.experience-card {
+  position: relative;
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -50px;
+  top: 30px;
+  width: 30px;
+  height: 30px;
+  @include flex-center;
+
+  @include mobile {
+    left: -25px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+    background: $accent-color;
+    border: 4px solid $surface-color;
+    border-radius: $radius-full;
+    box-shadow: 0 0 0 3px $accent-color;
+    transition: all $transition-base;
+
+    @include mobile {
+      width: 12px;
+      height: 12px;
+      border-width: 3px;
+    }
+  }
+}
+
+.experience-card.current .timeline-marker .marker-dot {
+  background: $success-color;
+  box-shadow: 0 0 0 3px $success-color, 0 0 15px rgba($success-color, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.card-content {
+  background: $surface-color;
+  border-radius: $radius-lg;
+  padding: 25px 30px;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+
+  @include mobile {
+    padding: 20px;
+  }
+
+  &:hover {
+    transform: translateX(5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.experience-card.current .card-content {
+  border-left: 4px solid $success-color;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.role-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.company-logo {
+  min-width: 50px;
+  height: 50px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  @include flex-center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+  }
+}
+
+.role-info {
+  h3 {
+    font-size: 1.2rem;
+    color: $heading-color;
+    margin: 0 0 5px;
+  }
+
+  h4 {
+    font-size: 1rem;
+    color: $accent-color;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.duration-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  background: $light-bg-color;
+  border-radius: $radius-md;
+  font-size: 0.85rem;
+  color: $default-color;
+  font-weight: 500;
+  white-space: nowrap;
+
+    &.current {
+    background: rgba($success-color, 0.1);
+    color: color.adjust($success-color, $lightness: -10%);
+  }
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: $default-color;
+  margin-bottom: 15px;
+}
+
+.achievements-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: $default-color;
+
+    i {
+      color: $success-color;
+      font-size: 14px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Project Gallery
+.project-gallery {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid $light-bg-color;
+
+  .gallery-title {
+    font-size: 0.95rem;
+    color: $heading-color;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: $accent-color;
+    }
+  }
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image-wrapper {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $light-bg-color;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba($heading-color, 0.7);
+    @include flex-center;
+    opacity: 0;
+    transition: opacity $transition-base;
+
+    i {
+      font-size: 2rem;
+      color: $contrast-color;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-lg;
+
+    img {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.image-caption {
+  font-size: 0.8rem;
+  color: $default-color;
+  text-align: center;
+  font-weight: 500;
+}
+
+.current-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 15px;
+  padding: 6px 12px;
+  background: rgba($success-color, 0.1);
+  color: color.adjust($success-color, $lightness: -10%);
+  border-radius: $radius-md;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  i {
+    font-size: 8px;
+    animation: blink 1s infinite;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+// Education Timeline
+.education-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.timeline-track {
+  position: absolute;
+  left: 60px;
+  top: 20px;
+  bottom: 20px;
+  width: 3px;
+  background: linear-gradient(180deg, $accent-color, $heading-color);
+  border-radius: 2px;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.education-card {
+  display: flex;
+  gap: 30px;
+  position: relative;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.timeline-node {
+  min-width: 120px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px;
+  position: relative;
+
+  @include mobile {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: $accent-color;
+    border: 4px solid $surface-color;
+    border-radius: $radius-full;
+    box-shadow: 0 0 0 3px $accent-color;
+  }
+
+  .node-year {
+    font-family: $heading-font;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $accent-color;
+    padding: 8px 15px;
+    background: rgba($accent-color, 0.1);
+    border-radius: $radius-md;
+  }
+}
+
+.education-card .card-content {
+  flex: 1;
+  background: $surface-color;
+  border-radius: $radius-lg;
+  padding: 25px;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.degree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 10px;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    color: $heading-color;
+    margin: 0;
+  }
+}
+
+.period-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: $light-bg-color;
+  border-radius: $radius-md;
+  font-size: 0.85rem;
+  color: $default-color;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.institution {
+  font-size: 1rem;
+  color: $accent-color;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+
+  i {
+    font-size: 14px;
+  }
+}
+
+// Download Section
+.download-section {
+  margin-top: 50px;
+}
+
+.download-card {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 30px;
+  background: linear-gradient(135deg, $accent-color, $heading-color);
+  border-radius: $radius-xl;
+  color: $contrast-color;
+
+  @include mobile {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 25px;
+  }
+
+  .download-icon {
+    @include flex-center;
+    min-width: 70px;
+    height: 70px;
+    background: rgba($contrast-color, 0.2);
+    border-radius: $radius-lg;
+
+    i {
+      font-size: 32px;
+    }
+  }
+
+  .download-info {
+    flex: 1;
+
+    h4 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin: 0 0 5px;
+    }
+
+    p {
+      margin: 0;
+      color: #ffffff;
+      opacity: 0.95;
+      font-size: 0.95rem;
+    }
+  }
+
+  .btn {
+    background: $contrast-color;
+    color: $accent-color;
+    border: none;
+
+    &:hover {
+      background: $light-bg-color;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* Lightbox styles for project gallery */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 95%;
+  max-height: 95%;
+  background: transparent;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.lightbox-caption {
+  margin-top: 10px;
+  color: $contrast-color;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: $surface-color;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+
+.lightbox-close i {
+  font-size: 1.1rem;
+  color: $heading-color;
+}
+

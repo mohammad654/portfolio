@@ -1,0 +1,111 @@
+<section id="hero" class="hero-section">
+  <div class="hero-background">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <div class="row g-0 align-items-center">
+      
+      <!-- Hero Content -->
+      <div class="col-lg-6 hero-content" data-aos="fade-right">
+        <div class="content-wrapper">
+          <!-- Greeting -->
+          <div class="greeting" data-aos="fade-up" data-aos-delay="100">
+            <span class="wave">👋</span>
+            <span class="text">Hello, I'm</span>
+          </div>
+
+          <!-- Name -->
+          <h1 class="hero-name" data-aos="fade-up" data-aos-delay="200">
+            Mohammad <span class="accent">Ali</span>
+          </h1>
+
+          <!-- Typed Roles -->
+          <div class="hero-title" data-aos="fade-up" data-aos-delay="300">
+            <span class="prefix">Creative</span>
+            <span class="typed-text">{{ currentRole }}</span>
+            <span class="cursor">|</span>
+          </div>
+
+          <!-- Description -->
+          <p class="hero-description" data-aos="fade-up" data-aos-delay="400">
+            I create digital experiences that inspire and engage. Specializing in code quality analysis, 
+            DevOps automation, and full-stack development. Currently building CCQAT at Capgemini Engineering - 
+            transforming complex technical challenges into elegant, scalable solutions.
+          </p>
+
+          <!-- Stats -->
+          <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
+            <div class="stat-item" *ngFor="let stat of stats">
+              <span class="stat-value">{{ stat.current }}+</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="600">
+            <button class="btn btn-primary btn-lg" (click)="scrollToSection('resume')">
+              <i class="bi bi-file-earmark-text me-2"></i>
+              View My Work
+            </button>
+            <button class="btn btn-outline btn-lg" (click)="scrollToSection('contact')">
+              <i class="bi bi-chat-dots me-2"></i>
+              Get In Touch
+            </button>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-links" data-aos="fade-up" data-aos-delay="700">
+            <a href="https://www.linkedin.com/in/mohammad-ali-shikhi/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/mohammad654" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="mailto:mohammad.ali.shikhi.55&#64;gmail.com" aria-label="Email">
+              <i class="bi bi-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="col-lg-6 hero-image-col" data-aos="fade-left" data-aos-delay="200">
+        <div class="image-container">
+          <!-- Floating Cards -->
+          <div class="floating-elements">
+            <div 
+              *ngFor="let card of floatingCards; let i = index"
+              class="floating-card {{ card.class }}"
+              [attr.data-aos]="'zoom-in'"
+              [attr.data-aos-delay]="300 + (i * 100)"
+            >
+              <i class="bi {{ card.icon }}"></i>
+              <span>{{ card.label }}</span>
+            </div>
+          </div>
+
+          <!-- Profile Image -->
+          <div class="hero-image-wrapper">
+            <img src="/images/mo.jpg" alt="Mohammad Ali" class="hero-main-image">
+            <div class="image-frame"></div>
+            <div class="image-dots"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator-wrapper" data-aos="fade-up" data-aos-delay="800">
+    <button class="scroll-down" (click)="scrollToSection('about')">
+      <span class="mouse">
+        <span class="wheel"></span>
+      </span>
+      <span class="text">Scroll Down</span>
+    </button>
+  </div>
+</section>
