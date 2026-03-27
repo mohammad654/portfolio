@@ -1,0 +1,161 @@
+<section id="resume" class="section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Resume</h2>
+    <p>Professional journey and educational background in software engineering</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+    <!-- Tab Navigation -->
+    <div class="tab-navigation" data-aos="fade-up" data-aos-delay="150">
+      <button 
+        class="tab-btn"
+        [class.active]="activeTab === 'experience'"
+        (click)="setActiveTab('experience')"
+      >
+        <i class="bi bi-briefcase me-2"></i>
+        Professional Journey
+      </button>
+      <button 
+        class="tab-btn"
+        [class.active]="activeTab === 'education'"
+        (click)="setActiveTab('education')"
+      >
+        <i class="bi bi-mortarboard me-2"></i>
+        Academic Excellence
+      </button>
+    </div>
+
+    <!-- Experience Content -->
+    <div class="tab-content" *ngIf="activeTab === 'experience'" data-aos="fade-up">
+      <div class="experience-timeline">
+        <div class="timeline-line"></div>
+        
+        <div 
+          *ngFor="let exp of experiences; let i = index" 
+          class="experience-card"
+          [class.current]="exp.current"
+          [attr.data-aos]="'fade-up'"
+          [attr.data-aos-delay]="200 + (i * 100)"
+        >
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+          </div>
+          
+          <div class="card-content">
+            <div class="card-header">
+              <div class="role-section">
+                <div class="company-logo" *ngIf="exp.logo">
+                  <img [src]="exp.logo" [alt]="exp.company">
+                </div>
+                <div class="role-info">
+                  <h3>{{ exp.role }}</h3>
+                  <h4>{{ exp.company }}</h4>
+                </div>
+              </div>
+              <div class="duration-badge" [class.current]="exp.current">
+                <i class="bi bi-calendar3 me-1"></i>
+                {{ exp.period }}
+              </div>
+            </div>
+            
+            <p class="description">{{ exp.description }}</p>
+            
+            <ul class="achievements-list">
+              <li *ngFor="let achievement of exp.achievements">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>{{ achievement }}</span>
+              </li>
+            </ul>
+
+            <!-- Project Gallery -->
+            <div class="project-gallery" *ngIf="exp.images && exp.images.length > 0">
+              <h5 class="gallery-title">
+                <i class="bi bi-images me-2"></i>Project Screenshots
+              </h5>
+              <div class="gallery-grid">
+                <div class="gallery-item" *ngFor="let img of exp.images" (click)="openLightbox(img)">
+                  <div class="image-wrapper">
+                    <img [src]="img.src" [alt]="img.alt" loading="lazy">
+                    <div class="image-overlay">
+                      <i class="bi bi-zoom-in"></i>
+                    </div>
+                  </div>
+                  <span class="image-caption" *ngIf="img.caption">{{ img.caption }}</span>
+                </div>
+              </div>
+            </div>
+
+            <span class="current-badge" *ngIf="exp.current">
+              <i class="bi bi-circle-fill me-1"></i>
+              Current Position
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Content -->
+    <div class="tab-content" *ngIf="activeTab === 'education'" data-aos="fade-up">
+      <div class="education-timeline">
+        <div class="timeline-track"></div>
+        
+        <div 
+          *ngFor="let edu of education; let i = index" 
+          class="education-card"
+          [attr.data-aos]="'slide-up'"
+          [attr.data-aos-delay]="200 + (i * 100)"
+        >
+          <div class="timeline-node">
+            <div class="node-year">{{ edu.period.split(' ')[0] }}</div>
+          </div>
+          
+          <div class="card-content">
+            <div class="degree-header">
+              <h3>{{ edu.degree }}</h3>
+              <span class="period-badge">
+                <i class="bi bi-clock me-1"></i>
+                {{ edu.period }}
+              </span>
+            </div>
+            <h4 class="institution">
+              <i class="bi bi-building me-2"></i>
+              {{ edu.institution }}
+            </h4>
+            <p class="description">{{ edu.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download Section -->
+    <div class="download-section" data-aos="fade-up" data-aos-delay="500">
+      <div class="download-card">
+        <div class="download-icon">
+          <i class="bi bi-file-earmark-pdf"></i>
+        </div>
+        <div class="download-info">
+          <h4>Download Full Resume</h4>
+          <p>Get a detailed PDF version of my professional resume</p>
+        </div>
+        <a class="btn btn-primary" (click)="downloadCV($event)" role="button">
+          <i class="bi bi-download me-2"></i>
+          Download CV
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-overlay" *ngIf="lightboxOpen" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button class="lightbox-close" (click)="closeLightbox()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <img [src]="lightboxImage" [alt]="lightboxCaption">
+      <p class="lightbox-caption" *ngIf="lightboxCaption">{{ lightboxCaption }}</p>
+    </div>
+  </div>
+</section>

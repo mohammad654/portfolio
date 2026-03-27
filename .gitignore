@@ -6,6 +6,8 @@
 /e2e/test-output/
 /.angular/
 .angular/
+/.angular-cli.json
+/.ng/
 
 # Node modules and dependency files
 /node_modules/
@@ -15,14 +17,28 @@
 # Environment files
 /.env
 
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
-
 # TypeScript cache
 *.tsbuildinfo
 
 # Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Legacy folder pattern
+portfolio/
