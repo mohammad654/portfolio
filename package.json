@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy:prepare": "npm run build && node scripts/prepare-deploy.mjs",
     "watch": "ng build --watch --configuration development"
   },
   "private": true,

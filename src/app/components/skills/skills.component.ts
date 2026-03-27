@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+﻿import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 interface Skill {
@@ -94,7 +94,7 @@ export class SkillsComponent implements OnInit, AfterViewInit {
       name: 'Professional Scrum Master', 
       issuer: 'Scrum.org', 
       icon: 'bi-award-fill',
-      image: '/images/scrum.png'
+      image: 'images/scrum.png'
     },
     { 
       name: 'C++ Certified Associate', 
@@ -106,7 +106,7 @@ export class SkillsComponent implements OnInit, AfterViewInit {
       name: 'Capgemini SE Track', 
       issuer: 'Capgemini Academy', 
       icon: 'bi-patch-check-fill',
-      image: '/images/Capgemini-Engineering.png'
+      image: 'images/Capgemini-Engineering.png'
     },
     {
       name: 'Capgemini L1 Industry Certification - Energy Transition & Utilities',
@@ -124,3 +124,4 @@ export class SkillsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {}
 }
+

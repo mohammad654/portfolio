@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Experience {
@@ -187,3 +187,4 @@ export class ResumeComponent {
     window.open(fallback, '_blank', 'noopener');
   }
 }
+

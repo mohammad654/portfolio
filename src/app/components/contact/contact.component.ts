@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  
   contactInfo = [
     {
       icon: 'bi-geo-alt',
@@ -44,31 +43,58 @@ export class ContactComponent {
 
   isSubmitting = false;
   submitStatus: 'idle' | 'success' | 'error' = 'idle';
+  errorMessage = '';
+  private dismissTimeout: any = null;
 
-  async onSubmit() {
+  async onSubmit(form: NgForm) {
     if (this.isSubmitting) return;
     
     this.isSubmitting = true;
     this.submitStatus = 'idle';
+    this.errorMessage = '';
+    this.clearDismissTimeout();
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const subject = encodeURIComponent(this.formData.subject);
+      const body = encodeURIComponent(
+        `Name: ${this.formData.name}\n` +
+        `Email: ${this.formData.email}\n\n` +
+        `${this.formData.message}`
+      );
+      const mailtoUrl = `mailto:mohammad.ali.shikhi.55@gmail.com?subject=${subject}&body=${body}`;
+
+      if (typeof window !== 'undefined') {
+        window.location.href = mailtoUrl;
+      }
+
       this.submitStatus = 'success';
-      this.resetForm();
-    } catch {
+      form.resetForm();
+      
+      // Auto-dismiss success message after 4 seconds
+      this.dismissTimeout = setTimeout(() => {
+        this.submitStatus = 'idle';
+      }, 4000);
+    } catch (_error: any) {
       this.submitStatus = 'error';
+      this.errorMessage = 'Could not open your email client. Please email me directly at mohammad.ali.shikhi.55@gmail.com.';
+      
+      // Auto-dismiss error message after 6 seconds
+      this.dismissTimeout = setTimeout(() => {
+        this.submitStatus = 'idle';
+      }, 6000);
     } finally {
       this.isSubmitting = false;
     }
   }
 
-  resetForm() {
-    this.formData = {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    };
+  private clearDismissTimeout() {
+    if (this.dismissTimeout) {
+      clearTimeout(this.dismissTimeout);
+      this.dismissTimeout = null;
+    }
+  }
+
+  ngOnDestroy() {
+    this.clearDismissTimeout();
   }
 }

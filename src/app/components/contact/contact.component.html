@@ -69,7 +69,7 @@
             <p>Have a project in mind? Send me a message and let's discuss how we can work together.</p>
           </div>
 
-          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <form class="contact-form" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-group">
@@ -170,11 +170,11 @@
                     </div>
                     <div class="success-message" *ngIf="submitStatus === 'success'">
                       <i class="bi bi-check-circle-fill"></i>
-                      Your message has been sent successfully!
+                      Your email app has been opened with a pre-filled message.
                     </div>
                     <div class="error-message-box" *ngIf="submitStatus === 'error'">
                       <i class="bi bi-exclamation-circle-fill"></i>
-                      Oops! Something went wrong. Please try again.
+                      {{ errorMessage || 'Oops! Something went wrong. Please try again.' }}
                     </div>
                   </div>
 

@@ -235,7 +235,7 @@
   }
 
   .error-message {
-    color: $error-color;
+     color: color.adjust($error-color, $lightness: 5%);
     font-size: 0.8rem;
     margin-top: 5px;
     display: flex;
@@ -261,15 +261,17 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 18px;
+    padding: 14px 16px;
     border-radius: $radius-md;
     font-size: 0.9rem;
     font-weight: 500;
+    animation: slideIn 0.3s ease-out;
   }
 
   .loading-message {
-    background: rgba($accent-color, 0.1);
+    background: rgba($accent-color, 0.15);
     color: $accent-color;
+    border-left: 4px solid $accent-color;
 
     i {
       animation: spin 1s linear infinite;
@@ -277,13 +279,38 @@
   }
 
   .success-message {
-    background: rgba($success-color, 0.1);
-    color: color.adjust($success-color, $lightness: -10%);
+    background: rgba($success-color, 0.15);
+    color: color.adjust($success-color, $lightness: -15%);
+    border-left: 4px solid $success-color;
+    animation: slideIn 0.3s ease-out, fadeOut 0.5s ease-in 3s forwards;
   }
 
   .error-message-box {
-    background: rgba($error-color, 0.1);
-    color: $error-color;
+     background: rgba($error-color, 0.08);
+     color: color.adjust($error-color, $lightness: 8%);
+     border-left: 4px solid color.adjust($error-color, $lightness: 10%);
+
+    i {
+      flex-shrink: 0;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
 

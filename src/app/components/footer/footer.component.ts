@@ -23,7 +23,7 @@ export class FooterComponent {
     { icon: 'bi-linkedin', url: 'https://www.linkedin.com/in/mohammad-ali-shikhi/', label: 'LinkedIn' },
     { icon: 'bi-github', url: 'https://github.com/mohammad654', label: 'GitHub' },
     { icon: 'bi-twitter-x', url: 'https://twitter.com', label: 'Twitter' },
-    { icon: 'bi-instagram', url: 'https://instagram.com', label: 'Instagram' }
+    { icon: 'bi-instagram', url: 'https://www.instagram.com/_mo_1359/', label: 'Instagram' }
   ];
 
   scrollToSection(sectionId: string) {

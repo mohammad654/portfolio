@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface ModelItem {
@@ -64,3 +64,4 @@ export class MethodologyComponent {
     }
   ];
 }
+
